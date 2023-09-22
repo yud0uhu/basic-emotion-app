@@ -1,26 +1,43 @@
 import styled from "@emotion/styled";
+import { css } from "@emotion/react";
 
-const Container = styled.div`
+const containerStyle = css`
   margin: 0 auto;
   padding: 15px;
   max-width: 585px;
 `;
 
-const Text = styled.h1`
+const textStyles = css`
   color: var(--hiContrast);
 `;
 
-const ImageContainer = styled.div`
+const imageContainerStyle = css`
   display: flex;
   align-items: center;
   gap: 8px;
   margin-bottom: 8px;
 `;
 
-const Image = styled.img`
+const imageStyle = css`
   width: 100px;
   height: auto;
   border-radius: var(--1);
+`;
+
+const Container = styled.div`
+  ${containerStyle}
+`;
+
+const Text = styled.h1`
+  ${textStyles}
+`;
+
+const ImageContainer = styled.div`
+  ${imageContainerStyle}
+`;
+
+const Image = styled.img`
+  ${imageStyle}
 `;
 
 const StyledUl = styled.ul`
@@ -32,11 +49,24 @@ const StyledUl = styled.ul`
 const StyledLi = styled.li`
   list-style: none;
 `;
+interface Photo {
+  id: number;
+  thumbnailUrl: string;
+  title: string;
+}
 
-const PhotoListComponent = ({ text, photoList }) => {
+interface PhotoListComponentProps {
+  text: string;
+  photoList: Photo[];
+}
+
+const PhotoListComponent: React.FC<PhotoListComponentProps> = ({
+  text,
+  photoList,
+}) => {
   return (
     <Container>
-      <Text>PhotoListComponent from emotion.</Text>
+      <Text>PhotoListComponent from emotion</Text>
       <p style={{ margin: 0 }}>text: {text}</p>
 
       <StyledUl>
