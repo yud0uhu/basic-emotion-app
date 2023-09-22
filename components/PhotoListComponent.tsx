@@ -1,72 +1,54 @@
-/** @jsxImportSource @emotion/react */
-import { css } from "@emotion/react";
+import styled from "@emotion/styled";
 
-const containerStyle = css`
+const Container = styled.div`
   margin: 0 auto;
   padding: 15px;
   max-width: 585px;
 `;
 
-const textStyles = css`
+const Text = styled.h1`
   color: var(--hiContrast);
 `;
 
-const imageContainerStyle = css`
+const ImageContainer = styled.div`
   display: flex;
   align-items: center;
   gap: 8px;
   margin-bottom: 8px;
 `;
 
-const imageStyle = css`
+const Image = styled.img`
   width: 100px;
   height: auto;
   border-radius: var(--1);
 `;
 
-const Container = ({ children }) => {
-  return <div css={containerStyle}>{children}</div>;
-};
+const StyledUl = styled.ul`
+  padding: 0;
+  margin: 0;
+  list-style: none;
+`;
 
-const Text = ({ children }) => {
-  return <h1 css={textStyles}>{children}</h1>;
-};
-
-const ImageContainer = ({ children }) => {
-  return <div css={imageContainerStyle}>{children}</div>;
-};
-
-const Image = (props) => {
-  return <img css={imageStyle} {...props} />;
-};
+const StyledLi = styled.li`
+  list-style: none;
+`;
 
 const PhotoListComponent = ({ text, photoList }) => {
   return (
     <Container>
-      <Text>PhotoListComponent from Emotion CSS.</Text>
+      <Text>PhotoListComponent from emotion.</Text>
       <p style={{ margin: 0 }}>text: {text}</p>
 
-      <ul
-        css={css`
-          padding: 0;
-          margin: 0;
-          list-style: none;
-        `}
-      >
+      <StyledUl>
         {photoList.map((photo) => (
-          <li
-            css={css`
-              list-style: none;
-            `}
-            key={photo.id}
-          >
+          <StyledLi key={photo.id}>
             <ImageContainer>
               <Image src={photo.thumbnailUrl} alt={photo.title} />
               <p>{photo.title}</p>
             </ImageContainer>
-          </li>
+          </StyledLi>
         ))}
-      </ul>
+      </StyledUl>
     </Container>
   );
 };
